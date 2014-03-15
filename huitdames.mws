@@ -1,0 +1,377 @@
+{VERSION 2 3 "IBM INTEL NT" "2.3" }
+{USTYLETAB {CSTYLE "Maple Input" -1 0 "Courier" 0 1 255 0 0 1 0 1 0 0 
+1 0 0 0 0 }{CSTYLE "2D Math" -1 2 "Times" 0 1 0 0 0 0 0 0 2 0 0 0 0 0 
+0 }{CSTYLE "2D Output" 2 20 "" 0 1 0 0 255 1 0 0 0 0 0 0 0 0 0 }
+{PSTYLE "Normal" -1 0 1 {CSTYLE "" -1 -1 "" 0 1 0 0 0 0 0 0 0 0 0 0 0 
+0 0 }0 0 0 -1 -1 -1 0 0 0 0 0 0 -1 0 }{PSTYLE "Text Output" -1 2 1 
+{CSTYLE "" -1 -1 "Courier" 1 10 0 0 255 1 0 0 0 0 0 1 3 0 0 }1 0 0 -1 
+-1 -1 0 0 0 0 0 0 -1 0 }{PSTYLE "Warning" 2 7 1 {CSTYLE "" -1 -1 "" 0 
+1 0 0 255 1 0 0 0 0 0 0 1 0 0 }0 0 0 -1 -1 -1 0 0 0 0 0 0 -1 0 }
+{PSTYLE "Maple Output" 0 11 1 {CSTYLE "" -1 -1 "" 0 1 0 0 0 0 0 0 0 0 
+0 0 0 0 0 }3 3 0 -1 -1 -1 0 0 0 0 0 0 -1 0 }}
+{SECT 0 {EXCHG {PARA 0 "> " 0 "" {MPLTEXT 1 0 284 "#Huit Dames\n#David
+ H\351rault 2012\n#Ce programme resout le probleme d'echec dit des \"h
+uits dames\"\n#Il s'agit de placer 8 dames sur l'echequier sans qu'auc
+une ne soit menacee par une autre\n#Wikipedia annonce 92 solutions, 12
+ sans rotation ni symetrie de l'echequier\nrestart:\nwith(linalg):" }}
+{PARA 7 "" 1 "" {TEXT -1 32 "Warning, new definition for norm" }}
+{PARA 7 "" 1 "" {TEXT -1 33 "Warning, new definition for trace" }}}
+{EXCHG {PARA 0 "> " 0 "" {MPLTEXT 1 0 555 "Etest:=matrix(8,8,[0,0,0,0,
+1,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,1]);\nE:=matrix(8,8,[0
+,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]):\nEchequier
+:=matrix(8,8,[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0]):\n#E sera l'echequier sur lequel les dames (\"1\") seront placees
+\n#l'origine (0,0) se trouve en haut a gauche" }}{PARA 11 "" 1 "" 
+{XPPMATH 20 "6#>%&EtestG-%'MATRIXG6#7*7*\"\"!F*F*F*\"\"\"F*F*F*7*F*F*F
+*F*F*F*F*F*7*F*F*F+F*F*F*F*F*F,F)F,F,7*F+F*F*F*F*F*F*F+" }}}{EXCHG 
+{PARA 0 "> " 0 "" {MPLTEXT 1 0 211 "#Sans reel interet\nfor i from 1 w
+hile i<5 do\nfor j from 1 while j<5 do\nEchequier[2*i-1,2*j-1]:=blanc:
+\nEchequier[2*i,2*j]:=blanc:\nEchequier[2*i-1,2*j]:=noir:\nEchequier[2
+*i,2*j-1]:=noir:\nod:\nod:\nevalm(Echequier);\n" }}{PARA 11 "" 1 "" 
+{XPPMATH 20 "6#-%'MATRIXG6#7*7*%&blancG%%noirGF(F)F(F)F(F)7*F)F(F)F(F)
+F(F)F(F'F*F'F*F'F*" }}}{EXCHG {PARA 0 "> " 0 "" {MPLTEXT 1 0 153 "#Per
+met de remettre un echiquier a 0\nresetE:=proc(E)\nlocal i,j:\nfor i f
+rom 1 while i<9 do:\nfor j from 1 while j<9 do:\nE[i,j]:=0:\nod:\nod:
+\nRETURN(E):\nend:\n" }}}{EXCHG {PARA 0 "> " 0 "" {MPLTEXT 1 0 269 "#V
+erifie si une dame se trouve sur une ligne donn\351e\n#false : presenc
+e d'une dame\n#true : absence\n#non utilis\351 dans la boucle principa
+le\nCheckli:=proc(E,li)\nlocal i:\nfor i from 1 while i<9 do\nif E[li,
+i]=1 then RETURN(false) fi: od:\nRETURN(true):\nend:\nCheckli(Etest,8)
+;\n\n" }}{PARA 11 "" 1 "" {XPPMATH 20 "6#%&falseG" }}}{EXCHG {PARA 0 "
+> " 0 "" {MPLTEXT 1 0 203 "#Verifie si une dame se trouve sur une colo
+nne donn\351e\nCheckco:=proc(E,co)\nlocal i:\nfor i from 1 while i<9 d
+o\nif E[i,co]=1 then RETURN(false) fi: od:\nRETURN(true):\nend:\nCheck
+co(Etest,2);\nCheckco(Etest,3);" }}{PARA 11 "" 1 "" {XPPMATH 20 "6#%%t
+rueG" }}{PARA 11 "" 1 "" {XPPMATH 20 "6#%&falseG" }}}{EXCHG {PARA 0 ">
+ " 0 "" {MPLTEXT 1 0 1023 "#Verifie si une dame se trouve en diagonale
+ d'une position donnee\nCheckdia:=proc(E,li,co)\nlocal i,j,bord:\n#bor
+d = 1 si un bord est atteint\n#pour chacune des 4 diagonales il existe
+ 2 facons d'atteindre le bord\n\n#en bas a droite\ni:=li: j:=co:\nbord
+:=0:\nif (li=8) or (co=8) then bord:=1 fi: \nwhile bord<1 do\ni:=i+1:
+\nj:=j+1:\nif E[i,j]=1 then RETURN(false) fi:\nif (i=8) or (j=8) then \+
+bord:=1 fi:\nod:\n\n#en haut a droite\ni:=li: j:=co:\nbord:=0:\nif (li
+=1) or (co=8) then bord:=1 fi: \nwhile bord<1 do\ni:=i-1:\nj:=j+1:\nif
+ E[i,j]=1 then RETURN(false) fi:\nif (i=1) or (j=8) then bord:=1 fi:\n
+od:\n\n#en haut a gauche\ni:=li: j:=co:\nbord:=0:\nif (li=1) or (co=1)
+ then bord:=1 fi: \nwhile bord<1 do\ni:=i-1:\nj:=j-1:\nif E[i,j]=1 the
+n RETURN(false) fi:\nif (i=1) or (j=1) then bord:=1 fi:\nod:\n\n#en ba
+s a gauche\ni:=li: j:=co:\nbord:=0:\nif (li=8) or (co=1) then bord:=1 \+
+fi: \nwhile bord<1 do\ni:=i+1:\nj:=j-1:\nif E[i,j]=1 then RETURN(false
+) fi:\nif (i=8) or (j=1) then bord:=1 fi:\nod:\n\n#si on arrive ici il
+ ny a pas de menace en diagonale\nRETURN(true):\nend:" }}}{EXCHG 
+{PARA 0 "> " 0 "" {MPLTEXT 1 0 20 "Checkdia(Etest,8,1);" }}{PARA 11 "
+" 1 "" {XPPMATH 20 "6#%%trueG" }}}{EXCHG {PARA 0 "> " 0 "" {MPLTEXT 1 
+0 2045 "#la boucle principale\nhuitdames:=proc(E)\nlocal i,j,fausserou
+te,k,nbsol,fini:\ni:=1:j:=1: \nfausseroute:=0: nbsol:=0: fini:=0:\n\n#
+fausseroute = 1 si la solution ne marche pas\nwhile fini=0 do \n\n   w
+hile fausseroute<1 do #tant que ca marche\n      if i=9 then #si on a \+
+remplie l'echequier \n         i:=8: nbsol:=nbsol+1: #on a trouve une \+
+nouvelle solution\n         print(evalm(E),nbsol); #et on l'affiche\n \+
+        for k from 1 while k<9 do \n            if E[i,k]=1 then j:=k+
+1 fi:\n            E[i,k]:=0: #puis on efface la derniere ligne et on \+
+reprend a la ligne i precedante\n                       #et la colonne
+ j suivante\n         od: \n      fi:\n      if j=9 then fausseroute:=
+1 else #si on atteint le bord droit alors on a rien trouve\n         i
+f Checkco(E,j)=true and Checkdia(E,i,j)=true  #sinon on verifie que la
+ position\n                                                        #co
+nvient\n            then E[i,j]:=1: i:=i+1: j:=1: #si s'est le cas on \+
+place une dame\n                                          #puis on pas
+se a la ligne suivante\n                                          #pre
+miere colonne\n            else j:=j+1:                  #sinon on pla
+ce a la colonne suivante \n         if j=9 then fausseroute:=1 fi: #si
+ la colonne suivante est le bord la ligne precedante\n                \+
+                        #ne convient pas \n         fi:\n      fi:\n  \+
+ od: #cette boucle est quittee si fausseroute=1\n\n   if fausseroute=1
+ then #dans ce cas \n      if i>1 then i:=i-1: else i:=1 fi: #on revie
+nt a la ligne precedante\n      for k from 1 while k<9 do \n         i
+f E[i,k]=1 then j:=k+1 fi: #on reprend a la colonne suivante \n       \+
+  E[i,k]:=0:                  #puis on efface la ligne\n      od:\n   \+
+   if j<9 then fausseroute:=0 fi: #et on reinitialise fausseroute\n   \+
+fi:\n   \n   if i=1 and j=9 then fini:=1 fi: #si on revient sur la pre
+miere ligne,\n                                   #que toutes les colon
+nes sont epuisees\n                                   #alors on a couv
+ert l'ensemble des solutions\nod: #sinon on recommence !\n\nend:  \n\n
+\n" }}}{EXCHG {PARA 0 "> " 0 "" {MPLTEXT 1 0 69 "resetE(E);\nprintleve
+l:=0: #pour le debug\nhuitdames(E);\nprintlevel:=0:" }}{PARA 11 "" 1 "
+" {XPPMATH 20 "6#%\"EG" }}{PARA 11 "" 1 "" {XPPMATH 20 "6$-%'MATRIXG6#
+7*7*\"\"\"\"\"!F)F)F)F)F)F)7*F)F)F)F)F(F)F)F)7*F)F)F)F)F)F)F)F(7*F)F)F
+)F)F)F(F)F)7*F)F)F(F)F)F)F)F)7*F)F)F)F)F)F)F(F)7*F)F(F)F)F)F)F)F)7*F)F
+)F)F(F)F)F)F)F(" }}{PARA 11 "" 1 "" {XPPMATH 20 "6$-%'MATRIXG6#7*7*\"
+\"\"\"\"!F)F)F)F)F)F)7*F)F)F)F)F)F(F)F)7*F)F)F)F)F)F)F)F(7*F)F)F(F)F)F
+)F)F)7*F)F)F)F)F)F)F(F)7*F)F)F)F(F)F)F)F)7*F)F(F)F)F)F)F)F)7*F)F)F)F)F
+(F)F)F)\"\"#" }}{PARA 11 "" 1 "" {XPPMATH 20 "6$-%'MATRIXG6#7*7*\"\"\"
+\"\"!F)F)F)F)F)F)7*F)F)F)F)F)F)F(F)7*F)F)F)F(F)F)F)F)7*F)F)F)F)F)F(F)F
+)7*F)F)F)F)F)F)F)F(7*F)F(F)F)F)F)F)F)7*F)F)F)F)F(F)F)F)7*F)F)F(F)F)F)F
+)F)\"\"$" }}{PARA 11 "" 1 "" {XPPMATH 20 "6$-%'MATRIXG6#7*7*\"\"\"\"\"
+!F)F)F)F)F)F)7*F)F)F)F)F)F)F(F)7*F)F)F)F)F(F)F)F)7*F)F)F)F)F)F)F)F(7*F
+)F(F)F)F)F)F)F)7*F)F)F)F(F)F)F)F)7*F)F)F)F)F)F(F)F)7*F)F)F(F)F)F)F)F)
+\"\"%" }}{PARA 11 "" 1 "" {XPPMATH 20 "6$-%'MATRIXG6#7*7*\"\"!\"\"\"F(
+F(F(F(F(F(7*F(F(F(F)F(F(F(F(7*F(F(F(F(F(F)F(F(7*F(F(F(F(F(F(F(F)7*F(F(
+F)F(F(F(F(F(7*F)F(F(F(F(F(F(F(7*F(F(F(F(F(F(F)F(7*F(F(F(F(F)F(F(F(\"\"
+&" }}{PARA 11 "" 1 "" {XPPMATH 20 "6$-%'MATRIXG6#7*7*\"\"!\"\"\"F(F(F(
+F(F(F(7*F(F(F(F(F)F(F(F(7*F(F(F(F(F(F(F)F(7*F)F(F(F(F(F(F(F(7*F(F(F)F(
+F(F(F(F(7*F(F(F(F(F(F(F(F)7*F(F(F(F(F(F)F(F(7*F(F(F(F)F(F(F(F(\"\"'" }
+}{PARA 11 "" 1 "" {XPPMATH 20 "6$-%'MATRIXG6#7*7*\"\"!\"\"\"F(F(F(F(F(
+F(7*F(F(F(F(F)F(F(F(7*F(F(F(F(F(F(F)F(7*F(F(F(F)F(F(F(F(7*F)F(F(F(F(F(
+F(F(7*F(F(F(F(F(F(F(F)7*F(F(F(F(F(F)F(F(7*F(F(F)F(F(F(F(F(\"\"(" }}
+{PARA 11 "" 1 "" {XPPMATH 20 "6$-%'MATRIXG6#7*7*\"\"!\"\"\"F(F(F(F(F(F
+(7*F(F(F(F(F(F)F(F(7*F)F(F(F(F(F(F(F(7*F(F(F(F(F(F(F)F(7*F(F(F(F)F(F(F
+(F(7*F(F(F(F(F(F(F(F)7*F(F(F)F(F(F(F(F(7*F(F(F(F(F)F(F(F(\"\")" }}
+{PARA 11 "" 1 "" {XPPMATH 20 "6$-%'MATRIXG6#7*7*\"\"!\"\"\"F(F(F(F(F(F
+(7*F(F(F(F(F(F)F(F(7*F(F(F(F(F(F(F(F)7*F(F(F)F(F(F(F(F(7*F)F(F(F(F(F(F
+(F(7*F(F(F(F)F(F(F(F(7*F(F(F(F(F(F(F)F(7*F(F(F(F(F)F(F(F(\"\"*" }}
+{PARA 11 "" 1 "" {XPPMATH 20 "6$-%'MATRIXG6#7*7*\"\"!\"\"\"F(F(F(F(F(F
+(7*F(F(F(F(F(F(F)F(7*F(F(F)F(F(F(F(F(7*F(F(F(F(F(F)F(F(7*F(F(F(F(F(F(F
+(F)7*F(F(F(F(F)F(F(F(7*F)F(F(F(F(F(F(F(7*F(F(F(F)F(F(F(F(\"#5" }}
+{PARA 11 "" 1 "" {XPPMATH 20 "6$-%'MATRIXG6#7*7*\"\"!\"\"\"F(F(F(F(F(F
+(7*F(F(F(F(F(F(F)F(7*F(F(F(F(F)F(F(F(7*F(F(F(F(F(F(F(F)7*F)F(F(F(F(F(F
+(F(7*F(F(F(F)F(F(F(F(7*F(F(F(F(F(F)F(F(7*F(F(F)F(F(F(F(F(\"#6" }}
+{PARA 11 "" 1 "" {XPPMATH 20 "6$-%'MATRIXG6#7*7*\"\"!\"\"\"F(F(F(F(F(F
+(7*F(F(F(F(F(F(F(F)7*F(F(F(F(F(F)F(F(7*F)F(F(F(F(F(F(F(7*F(F(F)F(F(F(F
+(F(7*F(F(F(F(F)F(F(F(7*F(F(F(F(F(F(F)F(7*F(F(F(F)F(F(F(F(\"#7" }}
+{PARA 11 "" 1 "" {XPPMATH 20 "6$-%'MATRIXG6#7*7*\"\"!F(\"\"\"F(F(F(F(F
+(7*F)F(F(F(F(F(F(F(7*F(F(F(F(F(F(F)F(7*F(F(F(F(F)F(F(F(7*F(F(F(F(F(F(F
+(F)7*F(F)F(F(F(F(F(F(7*F(F(F(F)F(F(F(F(7*F(F(F(F(F(F)F(F(\"#8" }}
+{PARA 11 "" 1 "" {XPPMATH 20 "6$-%'MATRIXG6#7*7*\"\"!F(\"\"\"F(F(F(F(F
+(7*F(F(F(F(F)F(F(F(7*F(F)F(F(F(F(F(F(7*F(F(F(F(F(F(F(F)7*F)F(F(F(F(F(F
+(F(7*F(F(F(F(F(F(F)F(7*F(F(F(F)F(F(F(F(7*F(F(F(F(F(F)F(F(\"#9" }}
+{PARA 11 "" 1 "" {XPPMATH 20 "6$-%'MATRIXG6#7*7*\"\"!F(\"\"\"F(F(F(F(F
+(7*F(F(F(F(F)F(F(F(7*F(F)F(F(F(F(F(F(7*F(F(F(F(F(F(F(F)7*F(F(F(F(F(F)F
+(F(7*F(F(F(F)F(F(F(F(7*F(F(F(F(F(F(F)F(7*F)F(F(F(F(F(F(F(\"#:" }}
+{PARA 11 "" 1 "" {XPPMATH 20 "6$-%'MATRIXG6#7*7*\"\"!F(\"\"\"F(F(F(F(F
+(7*F(F(F(F(F)F(F(F(7*F(F(F(F(F(F(F)F(7*F)F(F(F(F(F(F(F(7*F(F(F(F)F(F(F
+(F(7*F(F)F(F(F(F(F(F(7*F(F(F(F(F(F(F(F)7*F(F(F(F(F(F)F(F(\"#;" }}
+{PARA 11 "" 1 "" {XPPMATH 20 "6$-%'MATRIXG6#7*7*\"\"!F(\"\"\"F(F(F(F(F
+(7*F(F(F(F(F)F(F(F(7*F(F(F(F(F(F(F(F)7*F(F(F(F)F(F(F(F(7*F)F(F(F(F(F(F
+(F(7*F(F(F(F(F(F(F)F(7*F(F)F(F(F(F(F(F(7*F(F(F(F(F(F)F(F(\"#<" }}
+{PARA 11 "" 1 "" {XPPMATH 20 "6$-%'MATRIXG6#7*7*\"\"!F(\"\"\"F(F(F(F(F
+(7*F(F(F(F(F(F)F(F(7*F(F)F(F(F(F(F(F(7*F(F(F(F(F)F(F(F(7*F(F(F(F(F(F(F
+(F)7*F)F(F(F(F(F(F(F(7*F(F(F(F(F(F(F)F(7*F(F(F(F)F(F(F(F(\"#=" }}
+{PARA 11 "" 1 "" {XPPMATH 20 "6$-%'MATRIXG6#7*7*\"\"!F(\"\"\"F(F(F(F(F
+(7*F(F(F(F(F(F)F(F(7*F(F)F(F(F(F(F(F(7*F(F(F(F(F(F(F)F(7*F)F(F(F(F(F(F
+(F(7*F(F(F(F)F(F(F(F(7*F(F(F(F(F(F(F(F)7*F(F(F(F(F)F(F(F(\"#>" }}
+{PARA 11 "" 1 "" {XPPMATH 20 "6$-%'MATRIXG6#7*7*\"\"!F(\"\"\"F(F(F(F(F
+(7*F(F(F(F(F(F)F(F(7*F(F)F(F(F(F(F(F(7*F(F(F(F(F(F(F)F(7*F(F(F(F(F)F(F
+(F(7*F)F(F(F(F(F(F(F(7*F(F(F(F(F(F(F(F)7*F(F(F(F)F(F(F(F(\"#?" }}
+{PARA 11 "" 1 "" {XPPMATH 20 "6$-%'MATRIXG6#7*7*\"\"!F(\"\"\"F(F(F(F(F
+(7*F(F(F(F(F(F)F(F(7*F(F(F(F)F(F(F(F(7*F)F(F(F(F(F(F(F(7*F(F(F(F(F(F(F
+(F)7*F(F(F(F(F)F(F(F(7*F(F(F(F(F(F(F)F(7*F(F)F(F(F(F(F(F(\"#@" }}
+{PARA 11 "" 1 "" {XPPMATH 20 "6$-%'MATRIXG6#7*7*\"\"!F(\"\"\"F(F(F(F(F
+(7*F(F(F(F(F(F)F(F(7*F(F(F(F)F(F(F(F(7*F(F)F(F(F(F(F(F(7*F(F(F(F(F(F(F
+(F)7*F(F(F(F(F)F(F(F(7*F(F(F(F(F(F(F)F(7*F)F(F(F(F(F(F(F(\"#A" }}
+{PARA 11 "" 1 "" {XPPMATH 20 "6$-%'MATRIXG6#7*7*\"\"!F(\"\"\"F(F(F(F(F
+(7*F(F(F(F(F(F)F(F(7*F(F(F(F(F(F(F(F)7*F)F(F(F(F(F(F(F(7*F(F(F(F)F(F(F
+(F(7*F(F(F(F(F(F(F)F(7*F(F(F(F(F)F(F(F(7*F(F)F(F(F(F(F(F(\"#B" }}
+{PARA 11 "" 1 "" {XPPMATH 20 "6$-%'MATRIXG6#7*7*\"\"!F(\"\"\"F(F(F(F(F
+(7*F(F(F(F(F(F)F(F(7*F(F(F(F(F(F(F(F)7*F)F(F(F(F(F(F(F(7*F(F(F(F(F)F(F
+(F(7*F(F(F(F(F(F(F)F(7*F(F)F(F(F(F(F(F(7*F(F(F(F)F(F(F(F(\"#C" }}
+{PARA 11 "" 1 "" {XPPMATH 20 "6$-%'MATRIXG6#7*7*\"\"!F(\"\"\"F(F(F(F(F
+(7*F(F(F(F(F(F)F(F(7*F(F(F(F(F(F(F(F)7*F(F)F(F(F(F(F(F(7*F(F(F(F)F(F(F
+(F(7*F)F(F(F(F(F(F(F(7*F(F(F(F(F(F(F)F(7*F(F(F(F(F)F(F(F(\"#D" }}
+{PARA 11 "" 1 "" {XPPMATH 20 "6$-%'MATRIXG6#7*7*\"\"!F(\"\"\"F(F(F(F(F
+(7*F(F(F(F(F(F(F)F(7*F(F)F(F(F(F(F(F(7*F(F(F(F(F(F(F(F)7*F(F(F(F(F)F(F
+(F(7*F)F(F(F(F(F(F(F(7*F(F(F(F)F(F(F(F(7*F(F(F(F(F(F)F(F(\"#E" }}
+{PARA 11 "" 1 "" {XPPMATH 20 "6$-%'MATRIXG6#7*7*\"\"!F(\"\"\"F(F(F(F(F
+(7*F(F(F(F(F(F(F)F(7*F(F)F(F(F(F(F(F(7*F(F(F(F(F(F(F(F)7*F(F(F(F(F(F)F
+(F(7*F(F(F(F)F(F(F(F(7*F)F(F(F(F(F(F(F(7*F(F(F(F(F)F(F(F(\"#F" }}
+{PARA 11 "" 1 "" {XPPMATH 20 "6$-%'MATRIXG6#7*7*\"\"!F(\"\"\"F(F(F(F(F
+(7*F(F(F(F(F(F(F(F)7*F(F(F(F)F(F(F(F(7*F(F(F(F(F(F(F)F(7*F)F(F(F(F(F(F
+(F(7*F(F(F(F(F(F)F(F(7*F(F)F(F(F(F(F(F(7*F(F(F(F(F)F(F(F(\"#G" }}
+{PARA 11 "" 1 "" {XPPMATH 20 "6$-%'MATRIXG6#7*7*\"\"!F(F(\"\"\"F(F(F(F
+(7*F)F(F(F(F(F(F(F(7*F(F(F(F(F)F(F(F(7*F(F(F(F(F(F(F(F)7*F(F)F(F(F(F(F
+(F(7*F(F(F(F(F(F(F)F(7*F(F(F)F(F(F(F(F(7*F(F(F(F(F(F)F(F(\"#H" }}
+{PARA 11 "" 1 "" {XPPMATH 20 "6$-%'MATRIXG6#7*7*\"\"!F(F(\"\"\"F(F(F(F
+(7*F)F(F(F(F(F(F(F(7*F(F(F(F(F)F(F(F(7*F(F(F(F(F(F(F(F)7*F(F(F(F(F(F)F
+(F(7*F(F(F)F(F(F(F(F(7*F(F(F(F(F(F(F)F(7*F(F)F(F(F(F(F(F(\"#I" }}
+{PARA 11 "" 1 "" {XPPMATH 20 "6$-%'MATRIXG6#7*7*\"\"!F(F(\"\"\"F(F(F(F
+(7*F(F)F(F(F(F(F(F(7*F(F(F(F(F)F(F(F(7*F(F(F(F(F(F(F(F)7*F(F(F(F(F(F)F
+(F(7*F)F(F(F(F(F(F(F(7*F(F(F)F(F(F(F(F(7*F(F(F(F(F(F(F)F(\"#J" }}
+{PARA 11 "" 1 "" {XPPMATH 20 "6$-%'MATRIXG6#7*7*\"\"!F(F(\"\"\"F(F(F(F
+(7*F(F)F(F(F(F(F(F(7*F(F(F(F(F(F(F)F(7*F(F(F)F(F(F(F(F(7*F(F(F(F(F(F)F
+(F(7*F(F(F(F(F(F(F(F)7*F)F(F(F(F(F(F(F(7*F(F(F(F(F)F(F(F(\"#K" }}
+{PARA 11 "" 1 "" {XPPMATH 20 "6$-%'MATRIXG6#7*7*\"\"!F(F(\"\"\"F(F(F(F
+(7*F(F)F(F(F(F(F(F(7*F(F(F(F(F(F(F)F(7*F(F(F)F(F(F(F(F(7*F(F(F(F(F(F)F
+(F(7*F(F(F(F(F(F(F(F)7*F(F(F(F(F)F(F(F(7*F)F(F(F(F(F(F(F(\"#L" }}
+{PARA 11 "" 1 "" {XPPMATH 20 "6$-%'MATRIXG6#7*7*\"\"!F(F(\"\"\"F(F(F(F
+(7*F(F)F(F(F(F(F(F(7*F(F(F(F(F(F(F)F(7*F(F(F(F(F)F(F(F(7*F)F(F(F(F(F(F
+(F(7*F(F(F(F(F(F(F(F)7*F(F(F(F(F(F)F(F(7*F(F(F)F(F(F(F(F(\"#M" }}
+{PARA 11 "" 1 "" {XPPMATH 20 "6$-%'MATRIXG6#7*7*\"\"!F(F(\"\"\"F(F(F(F
+(7*F(F)F(F(F(F(F(F(7*F(F(F(F(F(F(F(F)7*F(F(F(F(F)F(F(F(7*F(F(F(F(F(F(F
+)F(7*F)F(F(F(F(F(F(F(7*F(F(F)F(F(F(F(F(7*F(F(F(F(F(F)F(F(\"#N" }}
+{PARA 11 "" 1 "" {XPPMATH 20 "6$-%'MATRIXG6#7*7*\"\"!F(F(\"\"\"F(F(F(F
+(7*F(F)F(F(F(F(F(F(7*F(F(F(F(F(F(F(F)7*F(F(F(F(F(F)F(F(7*F)F(F(F(F(F(F
+(F(7*F(F(F)F(F(F(F(F(7*F(F(F(F(F)F(F(F(7*F(F(F(F(F(F(F)F(\"#O" }}
+{PARA 11 "" 1 "" {XPPMATH 20 "6$-%'MATRIXG6#7*7*\"\"!F(F(\"\"\"F(F(F(F
+(7*F(F(F(F(F(F)F(F(7*F)F(F(F(F(F(F(F(7*F(F(F(F(F)F(F(F(7*F(F)F(F(F(F(F
+(F(7*F(F(F(F(F(F(F(F)7*F(F(F)F(F(F(F(F(7*F(F(F(F(F(F(F)F(\"#P" }}
+{PARA 11 "" 1 "" {XPPMATH 20 "6$-%'MATRIXG6#7*7*\"\"!F(F(\"\"\"F(F(F(F
+(7*F(F(F(F(F(F)F(F(7*F(F(F(F(F(F(F(F)7*F(F)F(F(F(F(F(F(7*F(F(F(F(F(F(F
+)F(7*F)F(F(F(F(F(F(F(7*F(F(F)F(F(F(F(F(7*F(F(F(F(F)F(F(F(\"#Q" }}
+{PARA 11 "" 1 "" {XPPMATH 20 "6$-%'MATRIXG6#7*7*\"\"!F(F(\"\"\"F(F(F(F
+(7*F(F(F(F(F(F)F(F(7*F(F(F(F(F(F(F(F)7*F(F(F)F(F(F(F(F(7*F)F(F(F(F(F(F
+(F(7*F(F(F(F(F(F(F)F(7*F(F(F(F(F)F(F(F(7*F(F)F(F(F(F(F(F(\"#R" }}
+{PARA 11 "" 1 "" {XPPMATH 20 "6$-%'MATRIXG6#7*7*\"\"!F(F(\"\"\"F(F(F(F
+(7*F(F(F(F(F(F(F)F(7*F)F(F(F(F(F(F(F(7*F(F(F(F(F(F(F(F)7*F(F(F(F(F)F(F
+(F(7*F(F)F(F(F(F(F(F(7*F(F(F(F(F(F)F(F(7*F(F(F)F(F(F(F(F(\"#S" }}
+{PARA 11 "" 1 "" {XPPMATH 20 "6$-%'MATRIXG6#7*7*\"\"!F(F(\"\"\"F(F(F(F
+(7*F(F(F(F(F(F(F)F(7*F(F(F)F(F(F(F(F(7*F(F(F(F(F(F(F(F)7*F(F)F(F(F(F(F
+(F(7*F(F(F(F(F)F(F(F(7*F)F(F(F(F(F(F(F(7*F(F(F(F(F(F)F(F(\"#T" }}
+{PARA 11 "" 1 "" {XPPMATH 20 "6$-%'MATRIXG6#7*7*\"\"!F(F(\"\"\"F(F(F(F
+(7*F(F(F(F(F(F(F)F(7*F(F(F(F(F)F(F(F(7*F(F)F(F(F(F(F(F(7*F(F(F(F(F(F)F
+(F(7*F)F(F(F(F(F(F(F(7*F(F(F)F(F(F(F(F(7*F(F(F(F(F(F(F(F)\"#U" }}
+{PARA 11 "" 1 "" {XPPMATH 20 "6$-%'MATRIXG6#7*7*\"\"!F(F(\"\"\"F(F(F(F
+(7*F(F(F(F(F(F(F)F(7*F(F(F(F(F)F(F(F(7*F(F(F)F(F(F(F(F(7*F)F(F(F(F(F(F
+(F(7*F(F(F(F(F(F)F(F(7*F(F(F(F(F(F(F(F)7*F(F)F(F(F(F(F(F(\"#V" }}
+{PARA 11 "" 1 "" {XPPMATH 20 "6$-%'MATRIXG6#7*7*\"\"!F(F(\"\"\"F(F(F(F
+(7*F(F(F(F(F(F(F(F)7*F)F(F(F(F(F(F(F(7*F(F(F)F(F(F(F(F(7*F(F(F(F(F(F)F
+(F(7*F(F)F(F(F(F(F(F(7*F(F(F(F(F(F(F)F(7*F(F(F(F(F)F(F(F(\"#W" }}
+{PARA 11 "" 1 "" {XPPMATH 20 "6$-%'MATRIXG6#7*7*\"\"!F(F(\"\"\"F(F(F(F
+(7*F(F(F(F(F(F(F(F)7*F)F(F(F(F(F(F(F(7*F(F(F(F(F)F(F(F(7*F(F(F(F(F(F(F
+)F(7*F(F)F(F(F(F(F(F(7*F(F(F(F(F(F)F(F(7*F(F(F)F(F(F(F(F(\"#X" }}
+{PARA 11 "" 1 "" {XPPMATH 20 "6$-%'MATRIXG6#7*7*\"\"!F(F(\"\"\"F(F(F(F
+(7*F(F(F(F(F(F(F(F)7*F(F(F(F(F)F(F(F(7*F(F(F)F(F(F(F(F(7*F)F(F(F(F(F(F
+(F(7*F(F(F(F(F(F(F)F(7*F(F)F(F(F(F(F(F(7*F(F(F(F(F(F)F(F(\"#Y" }}
+{PARA 11 "" 1 "" {XPPMATH 20 "6$-%'MATRIXG6#7*7*\"\"!F(F(F(\"\"\"F(F(F
+(7*F)F(F(F(F(F(F(F(7*F(F(F(F)F(F(F(F(7*F(F(F(F(F(F)F(F(7*F(F(F(F(F(F(F
+(F)7*F(F)F(F(F(F(F(F(7*F(F(F(F(F(F(F)F(7*F(F(F)F(F(F(F(F(\"#Z" }}
+{PARA 11 "" 1 "" {XPPMATH 20 "6$-%'MATRIXG6#7*7*\"\"!F(F(F(\"\"\"F(F(F
+(7*F)F(F(F(F(F(F(F(7*F(F(F(F(F(F(F(F)7*F(F(F(F)F(F(F(F(7*F(F)F(F(F(F(F
+(F(7*F(F(F(F(F(F(F)F(7*F(F(F)F(F(F(F(F(7*F(F(F(F(F(F)F(F(\"#[" }}
+{PARA 11 "" 1 "" {XPPMATH 20 "6$-%'MATRIXG6#7*7*\"\"!F(F(F(\"\"\"F(F(F
+(7*F)F(F(F(F(F(F(F(7*F(F(F(F(F(F(F(F)7*F(F(F(F(F(F)F(F(7*F(F(F)F(F(F(F
+(F(7*F(F(F(F(F(F(F)F(7*F(F)F(F(F(F(F(F(7*F(F(F(F)F(F(F(F(\"#\\" }}
+{PARA 11 "" 1 "" {XPPMATH 20 "6$-%'MATRIXG6#7*7*\"\"!F(F(F(\"\"\"F(F(F
+(7*F(F)F(F(F(F(F(F(7*F(F(F(F)F(F(F(F(7*F(F(F(F(F(F)F(F(7*F(F(F(F(F(F(F
+(F)7*F(F(F)F(F(F(F(F(7*F)F(F(F(F(F(F(F(7*F(F(F(F(F(F(F)F(\"#]" }}
+{PARA 11 "" 1 "" {XPPMATH 20 "6$-%'MATRIXG6#7*7*\"\"!F(F(F(\"\"\"F(F(F
+(7*F(F)F(F(F(F(F(F(7*F(F(F(F)F(F(F(F(7*F(F(F(F(F(F(F)F(7*F(F(F)F(F(F(F
+(F(7*F(F(F(F(F(F(F(F)7*F(F(F(F(F(F)F(F(7*F)F(F(F(F(F(F(F(\"#^" }}
+{PARA 11 "" 1 "" {XPPMATH 20 "6$-%'MATRIXG6#7*7*\"\"!F(F(F(\"\"\"F(F(F
+(7*F(F)F(F(F(F(F(F(7*F(F(F(F(F(F)F(F(7*F)F(F(F(F(F(F(F(7*F(F(F(F(F(F(F
+)F(7*F(F(F(F)F(F(F(F(7*F(F(F(F(F(F(F(F)7*F(F(F)F(F(F(F(F(\"#_" }}
+{PARA 11 "" 1 "" {XPPMATH 20 "6$-%'MATRIXG6#7*7*\"\"!F(F(F(\"\"\"F(F(F
+(7*F(F)F(F(F(F(F(F(7*F(F(F(F(F(F(F(F)7*F)F(F(F(F(F(F(F(7*F(F(F(F)F(F(F
+(F(7*F(F(F(F(F(F(F)F(7*F(F(F)F(F(F(F(F(7*F(F(F(F(F(F)F(F(\"#`" }}
+{PARA 11 "" 1 "" {XPPMATH 20 "6$-%'MATRIXG6#7*7*\"\"!F(F(F(\"\"\"F(F(F
+(7*F(F(F)F(F(F(F(F(7*F)F(F(F(F(F(F(F(7*F(F(F(F(F(F)F(F(7*F(F(F(F(F(F(F
+(F)7*F(F)F(F(F(F(F(F(7*F(F(F(F)F(F(F(F(7*F(F(F(F(F(F(F)F(\"#a" }}
+{PARA 11 "" 1 "" {XPPMATH 20 "6$-%'MATRIXG6#7*7*\"\"!F(F(F(\"\"\"F(F(F
+(7*F(F(F)F(F(F(F(F(7*F)F(F(F(F(F(F(F(7*F(F(F(F(F(F(F)F(7*F(F)F(F(F(F(F
+(F(7*F(F(F(F(F(F(F(F)7*F(F(F(F(F(F)F(F(7*F(F(F(F)F(F(F(F(\"#b" }}
+{PARA 11 "" 1 "" {XPPMATH 20 "6$-%'MATRIXG6#7*7*\"\"!F(F(F(\"\"\"F(F(F
+(7*F(F(F)F(F(F(F(F(7*F(F(F(F(F(F(F(F)7*F(F(F(F)F(F(F(F(7*F(F(F(F(F(F(F
+)F(7*F)F(F(F(F(F(F(F(7*F(F(F(F(F(F)F(F(7*F(F)F(F(F(F(F(F(\"#c" }}
+{PARA 11 "" 1 "" {XPPMATH 20 "6$-%'MATRIXG6#7*7*\"\"!F(F(F(\"\"\"F(F(F
+(7*F(F(F(F(F(F(F)F(7*F)F(F(F(F(F(F(F(7*F(F(F)F(F(F(F(F(7*F(F(F(F(F(F(F
+(F)7*F(F(F(F(F(F)F(F(7*F(F(F(F)F(F(F(F(7*F(F)F(F(F(F(F(F(\"#d" }}
+{PARA 11 "" 1 "" {XPPMATH 20 "6$-%'MATRIXG6#7*7*\"\"!F(F(F(\"\"\"F(F(F
+(7*F(F(F(F(F(F(F)F(7*F)F(F(F(F(F(F(F(7*F(F(F(F)F(F(F(F(7*F(F)F(F(F(F(F
+(F(7*F(F(F(F(F(F(F(F)7*F(F(F(F(F(F)F(F(7*F(F(F)F(F(F(F(F(\"#e" }}
+{PARA 11 "" 1 "" {XPPMATH 20 "6$-%'MATRIXG6#7*7*\"\"!F(F(F(\"\"\"F(F(F
+(7*F(F(F(F(F(F(F)F(7*F(F)F(F(F(F(F(F(7*F(F(F(F)F(F(F(F(7*F(F(F(F(F(F(F
+(F)7*F)F(F(F(F(F(F(F(7*F(F(F)F(F(F(F(F(7*F(F(F(F(F(F)F(F(\"#f" }}
+{PARA 11 "" 1 "" {XPPMATH 20 "6$-%'MATRIXG6#7*7*\"\"!F(F(F(\"\"\"F(F(F
+(7*F(F(F(F(F(F(F)F(7*F(F)F(F(F(F(F(F(7*F(F(F(F(F(F)F(F(7*F(F(F)F(F(F(F
+(F(7*F)F(F(F(F(F(F(F(7*F(F(F(F)F(F(F(F(7*F(F(F(F(F(F(F(F)\"#g" }}
+{PARA 11 "" 1 "" {XPPMATH 20 "6$-%'MATRIXG6#7*7*\"\"!F(F(F(\"\"\"F(F(F
+(7*F(F(F(F(F(F(F)F(7*F(F)F(F(F(F(F(F(7*F(F(F(F(F(F)F(F(7*F(F(F)F(F(F(F
+(F(7*F)F(F(F(F(F(F(F(7*F(F(F(F(F(F(F(F)7*F(F(F(F)F(F(F(F(\"#h" }}
+{PARA 11 "" 1 "" {XPPMATH 20 "6$-%'MATRIXG6#7*7*\"\"!F(F(F(\"\"\"F(F(F
+(7*F(F(F(F(F(F(F)F(7*F(F(F(F)F(F(F(F(7*F)F(F(F(F(F(F(F(7*F(F(F)F(F(F(F
+(F(7*F(F(F(F(F(F(F(F)7*F(F(F(F(F(F)F(F(7*F(F)F(F(F(F(F(F(\"#i" }}
+{PARA 11 "" 1 "" {XPPMATH 20 "6$-%'MATRIXG6#7*7*\"\"!F(F(F(\"\"\"F(F(F
+(7*F(F(F(F(F(F(F(F)7*F(F(F(F)F(F(F(F(7*F)F(F(F(F(F(F(F(7*F(F(F)F(F(F(F
+(F(7*F(F(F(F(F(F)F(F(7*F(F)F(F(F(F(F(F(7*F(F(F(F(F(F(F)F(\"#j" }}
+{PARA 11 "" 1 "" {XPPMATH 20 "6$-%'MATRIXG6#7*7*\"\"!F(F(F(\"\"\"F(F(F
+(7*F(F(F(F(F(F(F(F)7*F(F(F(F)F(F(F(F(7*F)F(F(F(F(F(F(F(7*F(F(F(F(F(F(F
+)F(7*F(F)F(F(F(F(F(F(7*F(F(F(F(F(F)F(F(7*F(F(F)F(F(F(F(F(\"#k" }}
+{PARA 11 "" 1 "" {XPPMATH 20 "6$-%'MATRIXG6#7*7*\"\"!F(F(F(F(\"\"\"F(F
+(7*F)F(F(F(F(F(F(F(7*F(F(F(F(F)F(F(F(7*F(F)F(F(F(F(F(F(7*F(F(F(F(F(F(F
+(F)7*F(F(F)F(F(F(F(F(7*F(F(F(F(F(F(F)F(7*F(F(F(F)F(F(F(F(\"#l" }}
+{PARA 11 "" 1 "" {XPPMATH 20 "6$-%'MATRIXG6#7*7*\"\"!F(F(F(F(\"\"\"F(F
+(7*F(F)F(F(F(F(F(F(7*F(F(F(F(F(F(F)F(7*F)F(F(F(F(F(F(F(7*F(F(F)F(F(F(F
+(F(7*F(F(F(F(F)F(F(F(7*F(F(F(F(F(F(F(F)7*F(F(F(F)F(F(F(F(\"#m" }}
+{PARA 11 "" 1 "" {XPPMATH 20 "6$-%'MATRIXG6#7*7*\"\"!F(F(F(F(\"\"\"F(F
+(7*F(F)F(F(F(F(F(F(7*F(F(F(F(F(F(F)F(7*F)F(F(F(F(F(F(F(7*F(F(F(F)F(F(F
+(F(7*F(F(F(F(F(F(F(F)7*F(F(F(F(F)F(F(F(7*F(F(F)F(F(F(F(F(\"#n" }}
+{PARA 11 "" 1 "" {XPPMATH 20 "6$-%'MATRIXG6#7*7*\"\"!F(F(F(F(\"\"\"F(F
+(7*F(F(F)F(F(F(F(F(7*F)F(F(F(F(F(F(F(7*F(F(F(F(F(F(F)F(7*F(F(F(F(F)F(F
+(F(7*F(F(F(F(F(F(F(F)7*F(F)F(F(F(F(F(F(7*F(F(F(F)F(F(F(F(\"#o" }}
+{PARA 11 "" 1 "" {XPPMATH 20 "6$-%'MATRIXG6#7*7*\"\"!F(F(F(F(\"\"\"F(F
+(7*F(F(F)F(F(F(F(F(7*F)F(F(F(F(F(F(F(7*F(F(F(F(F(F(F(F)7*F(F(F(F)F(F(F
+(F(7*F(F)F(F(F(F(F(F(7*F(F(F(F(F(F(F)F(7*F(F(F(F(F)F(F(F(\"#p" }}
+{PARA 11 "" 1 "" {XPPMATH 20 "6$-%'MATRIXG6#7*7*\"\"!F(F(F(F(\"\"\"F(F
+(7*F(F(F)F(F(F(F(F(7*F)F(F(F(F(F(F(F(7*F(F(F(F(F(F(F(F)7*F(F(F(F(F)F(F
+(F(7*F(F)F(F(F(F(F(F(7*F(F(F(F)F(F(F(F(7*F(F(F(F(F(F(F)F(\"#q" }}
+{PARA 11 "" 1 "" {XPPMATH 20 "6$-%'MATRIXG6#7*7*\"\"!F(F(F(F(\"\"\"F(F
+(7*F(F(F)F(F(F(F(F(7*F(F(F(F(F)F(F(F(7*F(F(F(F(F(F(F)F(7*F)F(F(F(F(F(F
+(F(7*F(F(F(F)F(F(F(F(7*F(F)F(F(F(F(F(F(7*F(F(F(F(F(F(F(F)\"#r" }}
+{PARA 11 "" 1 "" {XPPMATH 20 "6$-%'MATRIXG6#7*7*\"\"!F(F(F(F(\"\"\"F(F
+(7*F(F(F)F(F(F(F(F(7*F(F(F(F(F)F(F(F(7*F(F(F(F(F(F(F(F)7*F)F(F(F(F(F(F
+(F(7*F(F(F(F)F(F(F(F(7*F(F)F(F(F(F(F(F(7*F(F(F(F(F(F(F)F(\"#s" }}
+{PARA 11 "" 1 "" {XPPMATH 20 "6$-%'MATRIXG6#7*7*\"\"!F(F(F(F(\"\"\"F(F
+(7*F(F(F)F(F(F(F(F(7*F(F(F(F(F(F(F)F(7*F(F)F(F(F(F(F(F(7*F(F(F(F)F(F(F
+(F(7*F(F(F(F(F(F(F(F)7*F)F(F(F(F(F(F(F(7*F(F(F(F(F)F(F(F(\"#t" }}
+{PARA 11 "" 1 "" {XPPMATH 20 "6$-%'MATRIXG6#7*7*\"\"!F(F(F(F(\"\"\"F(F
+(7*F(F(F)F(F(F(F(F(7*F(F(F(F(F(F(F)F(7*F(F)F(F(F(F(F(F(7*F(F(F(F(F(F(F
+(F)7*F(F(F(F(F)F(F(F(7*F)F(F(F(F(F(F(F(7*F(F(F(F)F(F(F(F(\"#u" }}
+{PARA 11 "" 1 "" {XPPMATH 20 "6$-%'MATRIXG6#7*7*\"\"!F(F(F(F(\"\"\"F(F
+(7*F(F(F)F(F(F(F(F(7*F(F(F(F(F(F(F)F(7*F(F(F(F)F(F(F(F(7*F)F(F(F(F(F(F
+(F(7*F(F(F(F(F(F(F(F)7*F(F)F(F(F(F(F(F(7*F(F(F(F(F)F(F(F(\"#v" }}
+{PARA 11 "" 1 "" {XPPMATH 20 "6$-%'MATRIXG6#7*7*\"\"!F(F(F(F(\"\"\"F(F
+(7*F(F(F(F)F(F(F(F(7*F)F(F(F(F(F(F(F(7*F(F(F(F(F)F(F(F(7*F(F(F(F(F(F(F
+(F)7*F(F)F(F(F(F(F(F(7*F(F(F(F(F(F(F)F(7*F(F(F)F(F(F(F(F(\"#w" }}
+{PARA 11 "" 1 "" {XPPMATH 20 "6$-%'MATRIXG6#7*7*\"\"!F(F(F(F(\"\"\"F(F
+(7*F(F(F(F)F(F(F(F(7*F(F)F(F(F(F(F(F(7*F(F(F(F(F(F(F(F)7*F(F(F(F(F)F(F
+(F(7*F(F(F(F(F(F(F)F(7*F)F(F(F(F(F(F(F(7*F(F(F)F(F(F(F(F(\"#x" }}
+{PARA 11 "" 1 "" {XPPMATH 20 "6$-%'MATRIXG6#7*7*\"\"!F(F(F(F(\"\"\"F(F
+(7*F(F(F(F)F(F(F(F(7*F(F(F(F(F(F(F)F(7*F)F(F(F(F(F(F(F(7*F(F(F)F(F(F(F
+(F(7*F(F(F(F(F)F(F(F(7*F(F)F(F(F(F(F(F(7*F(F(F(F(F(F(F(F)\"#y" }}
+{PARA 11 "" 1 "" {XPPMATH 20 "6$-%'MATRIXG6#7*7*\"\"!F(F(F(F(\"\"\"F(F
+(7*F(F(F(F)F(F(F(F(7*F(F(F(F(F(F(F)F(7*F)F(F(F(F(F(F(F(7*F(F(F(F(F(F(F
+(F)7*F(F)F(F(F(F(F(F(7*F(F(F(F(F)F(F(F(7*F(F(F)F(F(F(F(F(\"#z" }}
+{PARA 11 "" 1 "" {XPPMATH 20 "6$-%'MATRIXG6#7*7*\"\"!F(F(F(F(\"\"\"F(F
+(7*F(F(F(F(F(F(F(F)7*F(F)F(F(F(F(F(F(7*F(F(F(F)F(F(F(F(7*F)F(F(F(F(F(F
+(F(7*F(F(F(F(F(F(F)F(7*F(F(F(F(F)F(F(F(7*F(F(F)F(F(F(F(F(\"#!)" }}
+{PARA 11 "" 1 "" {XPPMATH 20 "6$-%'MATRIXG6#7*7*\"\"!F(F(F(F(F(\"\"\"F
+(7*F)F(F(F(F(F(F(F(7*F(F(F)F(F(F(F(F(7*F(F(F(F(F(F(F(F)7*F(F(F(F(F(F)F
+(F(7*F(F(F(F)F(F(F(F(7*F(F)F(F(F(F(F(F(7*F(F(F(F(F)F(F(F(\"#\")" }}
+{PARA 11 "" 1 "" {XPPMATH 20 "6$-%'MATRIXG6#7*7*\"\"!F(F(F(F(F(\"\"\"F
+(7*F(F)F(F(F(F(F(F(7*F(F(F(F)F(F(F(F(7*F)F(F(F(F(F(F(F(7*F(F(F(F(F(F(F
+(F)7*F(F(F(F(F)F(F(F(7*F(F(F)F(F(F(F(F(7*F(F(F(F(F(F)F(F(\"##)" }}
+{PARA 11 "" 1 "" {XPPMATH 20 "6$-%'MATRIXG6#7*7*\"\"!F(F(F(F(F(\"\"\"F
+(7*F(F)F(F(F(F(F(F(7*F(F(F(F(F(F)F(F(7*F(F(F)F(F(F(F(F(7*F)F(F(F(F(F(F
+(F(7*F(F(F(F)F(F(F(F(7*F(F(F(F(F(F(F(F)7*F(F(F(F(F)F(F(F(\"#$)" }}
+{PARA 11 "" 1 "" {XPPMATH 20 "6$-%'MATRIXG6#7*7*\"\"!F(F(F(F(F(\"\"\"F
+(7*F(F(F)F(F(F(F(F(7*F)F(F(F(F(F(F(F(7*F(F(F(F(F(F)F(F(7*F(F(F(F(F(F(F
+(F)7*F(F(F(F(F)F(F(F(7*F(F)F(F(F(F(F(F(7*F(F(F(F)F(F(F(F(\"#%)" }}
+{PARA 11 "" 1 "" {XPPMATH 20 "6$-%'MATRIXG6#7*7*\"\"!F(F(F(F(F(\"\"\"F
+(7*F(F(F)F(F(F(F(F(7*F(F(F(F(F(F(F(F)7*F(F)F(F(F(F(F(F(7*F(F(F(F(F)F(F
+(F(7*F)F(F(F(F(F(F(F(7*F(F(F(F(F(F)F(F(7*F(F(F(F)F(F(F(F(\"#&)" }}
+{PARA 11 "" 1 "" {XPPMATH 20 "6$-%'MATRIXG6#7*7*\"\"!F(F(F(F(F(\"\"\"F
+(7*F(F(F(F)F(F(F(F(7*F(F)F(F(F(F(F(F(7*F(F(F(F(F)F(F(F(7*F(F(F(F(F(F(F
+(F)7*F)F(F(F(F(F(F(F(7*F(F(F)F(F(F(F(F(7*F(F(F(F(F(F)F(F(\"#')" }}
+{PARA 11 "" 1 "" {XPPMATH 20 "6$-%'MATRIXG6#7*7*\"\"!F(F(F(F(F(\"\"\"F
+(7*F(F(F(F)F(F(F(F(7*F(F)F(F(F(F(F(F(7*F(F(F(F(F(F(F(F)7*F(F(F(F(F(F)F
+(F(7*F)F(F(F(F(F(F(F(7*F(F(F)F(F(F(F(F(7*F(F(F(F(F)F(F(F(\"#()" }}
+{PARA 11 "" 1 "" {XPPMATH 20 "6$-%'MATRIXG6#7*7*\"\"!F(F(F(F(F(\"\"\"F
+(7*F(F(F(F(F)F(F(F(7*F(F(F)F(F(F(F(F(7*F)F(F(F(F(F(F(F(7*F(F(F(F(F(F)F
+(F(7*F(F(F(F(F(F(F(F)7*F(F)F(F(F(F(F(F(7*F(F(F(F)F(F(F(F(\"#))" }}
+{PARA 11 "" 1 "" {XPPMATH 20 "6$-%'MATRIXG6#7*7*\"\"!F(F(F(F(F(F(\"\"
+\"7*F(F)F(F(F(F(F(F(7*F(F(F(F)F(F(F(F(7*F)F(F(F(F(F(F(F(7*F(F(F(F(F(F(
+F)F(7*F(F(F(F(F)F(F(F(7*F(F(F)F(F(F(F(F(7*F(F(F(F(F(F)F(F(\"#*)" }}
+{PARA 11 "" 1 "" {XPPMATH 20 "6$-%'MATRIXG6#7*7*\"\"!F(F(F(F(F(F(\"\"
+\"7*F(F)F(F(F(F(F(F(7*F(F(F(F(F)F(F(F(7*F(F(F)F(F(F(F(F(7*F)F(F(F(F(F(
+F(F(7*F(F(F(F(F(F(F)F(7*F(F(F(F)F(F(F(F(7*F(F(F(F(F(F)F(F(\"#!*" }}
+{PARA 11 "" 1 "" {XPPMATH 20 "6$-%'MATRIXG6#7*7*\"\"!F(F(F(F(F(F(\"\"
+\"7*F(F(F)F(F(F(F(F(7*F)F(F(F(F(F(F(F(7*F(F(F(F(F(F)F(F(7*F(F)F(F(F(F(
+F(F(7*F(F(F(F(F)F(F(F(7*F(F(F(F(F(F(F)F(7*F(F(F(F)F(F(F(F(\"#\"*" }}
+{PARA 11 "" 1 "" {XPPMATH 20 "6$-%'MATRIXG6#7*7*\"\"!F(F(F(F(F(F(\"\"
+\"7*F(F(F(F)F(F(F(F(7*F)F(F(F(F(F(F(F(7*F(F(F)F(F(F(F(F(7*F(F(F(F(F(F)
+F(F(7*F(F)F(F(F(F(F(F(7*F(F(F(F(F(F(F)F(7*F(F(F(F(F)F(F(F(\"##*" }}
+{PARA 11 "" 1 "" {XPPMATH 20 "6#\"\"\"" }}}{EXCHG {PARA 0 "> " 0 "" 
+{MPLTEXT 1 0 31 "#on trouve bien 92 solutions :)" }}}}{MARK "3 0 0" 
+53 }{VIEWOPTS 1 1 0 1 1 1803 }

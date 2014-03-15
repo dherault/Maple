@@ -1,0 +1,37 @@
+{VERSION 2 3 "IBM INTEL NT" "2.3" }
+{USTYLETAB {CSTYLE "Maple Input" -1 0 "Courier" 0 1 255 0 0 1 0 1 0 0 
+1 0 0 0 0 }{CSTYLE "2D Math" -1 2 "Times" 0 1 0 0 0 0 0 0 2 0 0 0 0 0 
+0 }{CSTYLE "2D Output" 2 20 "" 0 1 0 0 255 1 0 0 0 0 0 0 0 0 0 }
+{PSTYLE "Normal" -1 0 1 {CSTYLE "" -1 -1 "" 0 1 0 0 0 0 0 0 0 0 0 0 0 
+0 0 }0 0 0 -1 -1 -1 0 0 0 0 0 0 -1 0 }{PSTYLE "Maple Output" 0 11 1 
+{CSTYLE "" -1 -1 "" 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 }3 3 0 -1 -1 -1 0 0 
+0 0 0 0 -1 0 }{PSTYLE "Maple Plot" 0 13 1 {CSTYLE "" -1 -1 "" 0 1 0 0 
+0 0 0 0 0 0 0 0 0 0 0 }3 0 0 -1 -1 -1 0 0 0 0 0 0 -1 0 }}
+{SECT 0 {EXCHG {PARA 0 "> " 0 "" {MPLTEXT 1 0 8 "restart;" }}}{EXCHG 
+{PARA 0 "> " 0 "" {MPLTEXT 1 0 12 "with(plots):" }}}{EXCHG {PARA 0 "> \+
+" 0 "" {MPLTEXT 1 0 257 "des:=proc(n::integer)\nlocal p,top,i,j,L:\np:
+=0:\ntop:=eval(n):\nj:=1:\nL:=[[0,eval(n)]]:\n\nwhile top<>0 do\np:=0:
+\nfor i from 1 to top do if rand(1..6)()=6 then p:=p+1 fi: od:\nL:=[op
+(L),[eval(j),eval(top-p)]]:\nj:=j+1:\ntop:=eval(top-p):\nod:\n\nRETURN
+(plot(L)):\n\n\nend:" }}}{EXCHG {PARA 0 "> " 0 "" {MPLTEXT 1 0 34 "lol
+:=time():des(10000);time()-lol;" }}{PARA 13 "" 1 "" {INLPLOT "6#-%'CUR
+VESG6$7Z7$\"\"!$\"&++\"F(7$$\"\"\"F($\"%i$)F(7$$\"\"#F($\"%()pF(7$$\"
+\"$F($\"%:eF(7$$\"\"%F($\"%U[F(7$$\"\"&F($\"%gSF(7$$\"\"'F($\"%*R$F(7$
+$\"\"(F($\"%_GF(7$$\"\")F($\"%_BF(7$$\"\"*F($\"%z>F(7$$\"#5F($\"%m;F(7
+$$\"#6F($\"%)Q\"F(7$$\"#7F($\"%a6F(7$$\"#8F($\"$_*F(7$$\"#9F($\"$,)F(7
+$$\"#:F($\"$&oF(7$$\"#;F($\"$o&F(7$$\"#<F($\"$i%F(7$$\"#=F($\"$t$F(7$$
+\"#>F($\"$3$F(7$$\"#?F($\"$f#F(7$$\"#@F($\"$=#F(7$$\"#AF($\"$t\"F(7$$
+\"#BF($\"$\\\"F(7$$\"#CF($\"$B\"F(7$$\"#DF($\"$2\"F(7$$\"#EF($\"#!*F(7
+$$\"#FF($\"#sF(7$$\"#GF($\"#gF(7$$\"#HF($\"#]F(7$$\"#IF($\"#UF(7$$\"#J
+F($\"#OF(7$$\"#KF(F]t7$$\"#LF(Fdr7$$\"#MF(F`q7$$\"#NF(F\\p7$F^uF]o7$$
+\"#PF(FT7$$\"#QF(FO7$$\"#RF(FJ7$$\"#SF(FJ7$$\"#TF(FE7$FitF;7$$\"#VF(F6
+7$$\"#WF(F67$$\"#XF(F67$$\"#YF(F67$$\"#ZF(F67$$\"#[F(F67$$\"#\\F(F67$F
+dtF67$$\"#^F(F67$$\"#_F(F67$$\"#`F(F17$$\"#aF(F,7$$\"#bF(F(-%'COLOURG6
+&%$RGBG$FZ!\"\"F(F(" 2 433 433 433 2 0 1 0 2 9 0 4 2 1.000000 
+45.000000 45.000000 10030 10061 10056 10074 0 0 0 20030 0 12020 0 0 0 
+0 0 0 0 1 1 0 0 0 -23736 22525 0 0 0 0 0 1 }}{PARA 11 "" 1 "" 
+{XPPMATH 20 "6#$\"&))p#!\"$" }}}{EXCHG {PARA 0 "> " 0 "" {MPLTEXT 1 0 
+0 "" }}}{EXCHG {PARA 0 "> " 0 "" {MPLTEXT 1 0 0 "" }}}{EXCHG {PARA 0 "
+> " 0 "" {MPLTEXT 1 0 0 "" }}}{EXCHG {PARA 0 "> " 0 "" {MPLTEXT 1 0 0 
+"" }}}{EXCHG {PARA 0 "> " 0 "" {MPLTEXT 1 0 0 "" }}}}{MARK "3 1" 1 }
+{VIEWOPTS 1 1 0 1 1 1803 }

@@ -1,0 +1,313 @@
+{VERSION 2 3 "IBM INTEL NT" "2.3" }
+{USTYLETAB {CSTYLE "Maple Input" -1 0 "Courier" 0 1 255 0 0 1 0 1 0 0 
+1 0 0 0 0 }{CSTYLE "2D Math" -1 2 "Times" 0 1 179 180 3 0 0 0 2 0 0 0 
+0 0 0 }{CSTYLE "2D Output" 2 20 "" 0 1 0 0 255 1 0 0 0 0 0 0 0 0 0 }
+{PSTYLE "Normal" -1 0 1 {CSTYLE "" -1 -1 "" 0 1 238 191 0 0 0 0 0 0 0 
+0 0 0 0 }0 0 0 -1 -1 -1 0 0 0 0 0 0 -1 0 }{PSTYLE "Text Output" -1 2 
+1 {CSTYLE "" -1 -1 "Courier" 1 10 0 0 255 1 0 0 0 0 0 1 3 0 0 }1 0 0 
+-1 -1 -1 0 0 0 0 0 0 -1 0 }{PSTYLE "Warning" 2 7 1 {CSTYLE "" -1 -1 "
+" 0 1 0 0 255 1 0 0 0 0 0 0 1 0 0 }0 0 0 -1 -1 -1 0 0 0 0 0 0 -1 0 }
+{PSTYLE "Maple Output" 0 11 1 {CSTYLE "" -1 -1 "" 0 1 0 0 0 0 0 0 0 0 
+0 0 0 0 0 }3 3 0 -1 -1 -1 0 0 0 0 0 0 -1 0 }{PSTYLE "Maple Plot" 0 13 
+1 {CSTYLE "" -1 -1 "" 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 }3 0 0 -1 -1 -1 0 
+0 0 0 0 0 -1 0 }}
+{SECT 0 {EXCHG {PARA 0 "> " 0 "" {MPLTEXT 1 0 8 "restart;" }}}{EXCHG 
+{PARA 0 "" 0 "" {TEXT -1 207 "Ce programme a pour but la realisation d
+'un jeu de la vie (automate cellulaire) avec les regles de John Horton
+ Conway, grace a l'outil matriciel.\nBiblio :           http://fr.wiki
+pedia.org/wiki/Jeu_de_la_vie" }}{PARA 0 ">" 0 "" {MPLTEXT 1 0 26 "with
+(linalg):\nwith(plots):" }}{PARA 7 "" 1 "" {TEXT -1 32 "Warning, new d
+efinition for norm" }}{PARA 7 "" 1 "" {TEXT -1 33 "Warning, new defini
+tion for trace" }}}{EXCHG {PARA 0 ">" 0 "" {MPLTEXT 1 0 35 "A:=matrix(
+3,3,[1,2,3,4,5,6,7,8,9]);" }}{PARA 11 "" 1 "" {XPPMATH 20 "6#>%\"AG-%'
+MATRIXG6#7%7%\"\"\"\"\"#\"\"$7%\"\"%\"\"&\"\"'7%\"\"(\"\")\"\"*" }}}
+{EXCHG {PARA 0 ">" 0 "" {MPLTEXT 1 0 15 "A[1,3];\nA[2,2];" }}{PARA 11 
+"" 1 "" {XPPMATH 20 "6#\"\"$" }}{PARA 11 "" 1 "" {XPPMATH 20 "6#\"\"&
+" }}}{EXCHG {PARA 0 "" 0 "" {TEXT -1 134 "La procedure next_gen va, a \+
+partir d'une matrice-etape de generation n, renvoyer la matrice-etape \+
+de generation n+1, selon les regles " }{MPLTEXT 1 0 0 "" }}}{EXCHG 
+{PARA 0 ">" 0 "" {MPLTEXT 1 0 835 "next_gen:=proc(A::matrix)\nlocal n,
+p,M,adj,i,j:\nn:=rowdim(A):\np:=coldim(A):\nM:=matrix(n,p):\n\nadj:=pr
+oc(A::matrix,x::integer,y::integer)\nlocal t:\nt:=0:\n\nif x-1>0 then
+\nif y-1>0 then\nif A[x-1,y-1]=1 then t:=t+1: fi: fi:\nif A[x-1,y]=1 t
+hen t:=t+1: fi:\nif y+1<coldim(A)+1 then\nif A[x-1,y+1]=1 then t:=t+1:
+ fi: fi:\nfi:\n\nif y-1>0 then\nif A[x,y-1]=1 then t:=t+1: fi: fi:\nif
+ y+1<coldim(A)+1 then\nif A[x,y+1]=1 then t:=t+1: fi: fi:\n\nif x+1<ro
+wdim(A)+1 then\nif y-1>0 then\nif A[x+1,y-1]=1 then t:=t+1: fi: fi:\ni
+f A[x+1,y]=1 then t:=t+1: fi:\nif y+1<coldim(A)+1 then\nif A[x+1,y+1]=
+1 then t:=t+1: fi: fi:\nfi:\n\nRETURN(eval(t)):\nend:\n\nfor i from 1 \+
+to n do\nfor j from 1 to p do\nif adj(A,i,j)=3 then M[i,j]:=1:\nelif a
+dj(A,i,j)=2 then M[i,j]:=A[i,j]:\nelif adj(A,i,j)<2 then M[i,j]:=0:\ne
+lif adj(A,i,j)>3 then M[i,j]:=0:\nfi:\nod: od:\n\nRETURN(evalm(M)):\ne
+nd:\n\n" }}}{EXCHG {PARA 0 "" 0 "" {TEXT -1 169 "On test maintenant la
+ procedure next_gen sur les matrices B, C et E. B est un oscillateur b
+i-p\351riodique (grenouille), C une matrice quelconque et E une struct
+ure stable." }{MPLTEXT 1 0 0 "" }}}{EXCHG {PARA 0 ">" 0 "" {MPLTEXT 1 
+0 35 "B:=matrix(3,3,[0,1,0,0,1,0,0,1,0]);" }}{PARA 11 "" 1 "" 
+{XPPMATH 20 "6#>%\"BG-%'MATRIXG6#7%7%\"\"!\"\"\"F*F)F)" }}}{EXCHG 
+{PARA 0 ">" 0 "" {MPLTEXT 1 0 12 "next_gen(B);" }}{PARA 11 "" 1 "" 
+{XPPMATH 20 "6#-%'MATRIXG6#7%7%\"\"!F(F(7%\"\"\"F*F*F'" }}}{EXCHG 
+{PARA 0 ">" 0 "" {MPLTEXT 1 0 12 "next_gen(\");" }}{PARA 11 "" 1 "" 
+{XPPMATH 20 "6#-%'MATRIXG6#7%7%\"\"!\"\"\"F(F'F'" }}}{EXCHG {PARA 0 ">
+" 0 "" {MPLTEXT 1 0 47 "C:=matrix(3,5,[1,1,1,0,0,0,0,0,1,0,0,1,0,0,0])
+;" }}{PARA 11 "" 1 "" {XPPMATH 20 "6#>%\"CG-%'MATRIXG6#7%7'\"\"\"F*F*
+\"\"!F+7'F+F+F+F*F+7'F+F*F+F+F+" }}}{EXCHG {PARA 0 ">" 0 "" {MPLTEXT 
+1 0 12 "next_gen(C);" }}{PARA 11 "" 1 "" {XPPMATH 20 "6#-%'MATRIXG6#7%
+7'\"\"!\"\"\"F)F(F(7'F)F(F(F(F(7'F(F(F(F(F(" }}}{EXCHG {PARA 0 ">" 0 "
+" {MPLTEXT 1 0 12 "next_gen(\");" }}{PARA 11 "" 1 "" {XPPMATH 20 "6#-%
+'MATRIXG6#7%7'\"\"!\"\"\"F(F(F(F'7'F(F(F(F(F(" }}}{EXCHG {PARA 0 ">" 
+0 "" {MPLTEXT 1 0 12 "next_gen(\");" }}{PARA 11 "" 1 "" {XPPMATH 20 "6
+#-%'MATRIXG6#7%7'\"\"!F(F(F(F(F'F'" }}}{EXCHG {PARA 0 ">" 0 "" 
+{MPLTEXT 1 0 35 "E:=matrix(3,3,[1,1,0,1,1,0,0,0,0]);" }}{PARA 11 "" 1 
+"" {XPPMATH 20 "6#>%\"EG-%'MATRIXG6#7%7%\"\"\"F*\"\"!F)7%F+F+F+" }}}
+{EXCHG {PARA 0 ">" 0 "" {MPLTEXT 1 0 12 "next_gen(E);" }}{PARA 11 "" 
+1 "" {XPPMATH 20 "6#-%'MATRIXG6#7%7%\"\"\"F(\"\"!F'7%F)F)F)" }}}
+{EXCHG {PARA 0 "" 0 "" {TEXT -1 22 "Une autre grenouille :" }}{PARA 0 
+">" 0 "" {MPLTEXT 1 0 54 "Bprime:=matrix(4,4,[0,0,0,0,0,1,1,1,1,1,1,0,
+0,0,0,0]);" }}{PARA 11 "" 1 "" {XPPMATH 20 "6#>%'BprimeG-%'MATRIXG6#7&
+7&\"\"!F*F*F*7&F*\"\"\"F,F,7&F,F,F,F*F)" }}}{EXCHG {PARA 0 ">" 0 "" 
+{MPLTEXT 1 0 17 "next_gen(Bprime);" }}{PARA 11 "" 1 "" {XPPMATH 20 "6#
+-%'MATRIXG6#7&7&\"\"!F(\"\"\"F(7&F)F(F(F)F*7&F(F)F(F(" }}}{EXCHG 
+{PARA 0 ">" 0 "" {MPLTEXT 1 0 12 "next_gen(\");" }}{PARA 11 "" 1 "" 
+{XPPMATH 20 "6#-%'MATRIXG6#7&7&\"\"!F(F(F(7&F(\"\"\"F*F*7&F*F*F*F(F'" 
+}}}{EXCHG {PARA 0 "" 0 "" {TEXT -1 123 "On cr\351\351 maintenant une p
+rocedure-outil qui calcule la matrice de la n-ieme generation a partir
+ de celle de la generation 0." }}{PARA 0 ">" 0 "" {MPLTEXT 1 0 117 "ca
+lc_gen:=proc(A::matrix,n::integer)\nlocal i,M:\nM:=A:\nfor i from 1 to
+ n do M:=next_gen(M): od:\nRETURN(evalm(M)):\nend:" }}}{EXCHG {PARA 0 
+"" 0 "" {TEXT -1 80 "Puis on tente de renvoyer la matrice graphiquemen
+t grace a la bibliotheque plots" }}{PARA 0 ">" 0 "" {MPLTEXT 1 0 356 "
+display_gen:=proc(A::matrix)\nlocal S,i,j,n,p,t:\nn:=rowdim(A):\np:=co
+ldim(A):\nt:=0:\n\nfor i from 1 to n do\nfor j from 1 to p do\nif A[i,
+j]=1 then S[t]:=[[j-1,n-i],[j,n-i],[j,n-i+1],[j-1,n-i+1],[j-1,n-i]]: \+
+\nt:=t+1: fi:\nod: od:\n\nRETURN(PLOT(POLYGONS(seq(S[i],i=0..t-1)),COL
+OR(RGB,0,0,0),AXESTICKS(0,0),AXESSTYLE(BOX),SCALING(CONSTRAINED),VIEW(
+0..p,0..n))):\n\nend:" }}}{EXCHG {PARA 0 ">" 0 "" {MPLTEXT 1 0 15 "dis
+play_gen(B);" }}{PARA 13 "" 1 "" {INLPLOT "6(-%)POLYGONSG6%7'7$\"\"\"
+\"\"#7$F)F)7$F)\"\"$7$F(F,F'7'7$F(F(7$F)F(F*F'F/7'7$F(\"\"!7$F)F3F0F/F
+2-%&COLORG6&%$RGBGF3F3F3-%*AXESTICKSG6$F3F3-%*AXESSTYLEG6#%$BOXG-%(SCA
+LINGG6#%,CONSTRAINEDG-%%VIEWG6$;F3F,FG" 2 433 433 433 2 0 1 0 2 6 0 2 
+1 1.000000 45.000000 45.000000 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 1 
+0 0 0 0 0 0 0 0 0 0 1 }}}{EXCHG {PARA 0 ">" 0 "" {MPLTEXT 1 0 25 "disp
+lay_gen(next_gen(B));" }}{PARA 13 "" 1 "" {INLPLOT "6(-%)POLYGONSG6%7'
+7$\"\"!\"\"\"7$F)F)7$F)\"\"#7$F(F,F'7'F*7$F,F)7$F,F,F+F*7'F/7$\"\"$F)7
+$F3F,F0F/-%&COLORG6&%$RGBGF(F(F(-%*AXESTICKSG6$F(F(-%*AXESSTYLEG6#%$BO
+XG-%(SCALINGG6#%,CONSTRAINEDG-%%VIEWG6$;F(F3FG" 2 433 433 433 2 0 1 0 
+2 6 0 2 1 1.000000 45.000000 45.000000 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+0 0 1 1 0 0 0 0 3504 0 0 0 0 0 1 }}}{EXCHG {PARA 0 "" 0 "" {TEXT -1 
+42 "Enfin, on anime le tout sur n generations." }}{PARA 0 ">" 0 "" 
+{MPLTEXT 1 0 230 "anime_gen:=proc(A::matrix,n::integer)\nlocal M,i,L:
+\nM:=A:\nL[0]:=display_gen(M):\nfor i from 1 to n do\nL[i]:=display_ge
+n(next_gen(M)):\nM:=next_gen(M):\nod: \n\nRETURN(display(seq(L[i],i=0.
+.n),insequence=true,scaling=constrained)):\nend:\n" }}}{EXCHG {PARA 0 
+">" 0 "" {MPLTEXT 1 0 16 "anime_gen(B,10);" }}{PARA 13 "" 1 "" 
+{INLPLOT "6$-%(ANIMATEG6-7'-%)POLYGONSG6&7'7$\"\"\"\"\"#7$F-F-7$F-\"\"
+$7$F,F0F+7'7$F,F,7$F-F,F.F+F37'7$F,\"\"!7$F-F7F4F3F6-%&COLORG6&%$RGBGF
+7F7F7-%*AXESTICKSG6$F7F7-%*AXESSTYLEG6#%$BOXG-%(SCALINGG6#%,CONSTRAINE
+DG-%%VIEWG6$;F7F0FK7'-F(6&7'7$F7F,F3F+7$F7F-FPF27'F47$F0F,7$F0F-F.F4F9
+F=F@FDFHF&FLF&FLF&FLF&FLF&FD" 2 433 433 433 2 0 1 0 2 9 0 4 1 
+1.000000 45.000000 45.000000 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 1 0 
+0 0 0 106 1 0 0 0 100 1 }}}{EXCHG {PARA 0 "" 0 "" {TEXT -1 111 "Mainte
+nant que le programme marche etudions certains shemas interressants, p
+our commencer un vaisseau celebre :" }}{PARA 0 ">" 0 "" {MPLTEXT 1 0 
+827 "Mvaisseau:=matrix(20,20,[0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]);" }}
+{PARA 11 "" 1 "" {XPPMATH 20 "6#>%*MvaisseauG-%'MATRIXG6#7676\"\"!\"\"
+\"F*F*F*F*F*F*F*F*F*F*F*F*F*F*F*F*F*F*76F*F*F+F*F*F*F*F*F*F*F*F*F*F*F*
+F*F*F*F*F*76F+F+F+F*F*F*F*F*F*F*F*F*F*F*F*F*F*F*F*F*76F*F*F*F*F*F*F*F*
+F*F*F*F*F*F*F*F*F*F*F*F*F.F.F.F.F.F.F.F.F.F.F.F.F.F.F.F." }}}{EXCHG 
+{PARA 0 ">" 0 "" {MPLTEXT 1 0 47 "lol:=time():anime_gen(Mvaisseau,51);
+time()-lol;" }}{PARA 13 "" 1 "" {INLPLOT "6$-%(ANIMATEG6V7'-%)POLYGONS
+G6(7'7$\"\"\"\"#>7$\"\"#F-7$F/\"#?7$F,F1F+7'7$F/\"#=7$\"\"$F57$F7F-F.F
+47'7$\"\"!\"#<7$F,F<7$F,F57$F;F5F:7'F=7$F/F<F4F>F=7'FA7$F7F<F6F4FA-%&C
+OLORG6&%$RGBGF;F;F;-%*AXESTICKSG6$F;F;-%*AXESSTYLEG6#%$BOXG-%(SCALINGG
+6#%,CONSTRAINEDG-%%VIEWG6$;F;F1FV7'-F(6(7'F?F>F+7$F;F-F?F3F@FB7'7$F,\"
+#;7$F/FhnFAF=FgnFDFHFKFOFS7'-F(6(F3F9FBFfn7'Fin7$F7FhnFCFAFinFDFHFKFOF
+S7'-F(6(7'F>F4F.F+F>FB7'FC7$\"\"%F<7$FeoF5F6FCFfnF]oFDFHFKFOFS7'-F(6(F
+3FcoFfnF]o7'F^o7$FeoFhnFdoFCF^oFDFHFKFOFS7'-F(6(F@FcoF]oFjo7'7$F/\"#:7
+$F7FapF^oFinF`pFDFHFKFOFS7'-F(6(FcoFfnFjoF_p7'Fbp7$FeoFapF[pF^oFbpFDFH
+FKFOFS7'-F(6(FBFjo7'F[p7$\"\"&Fhn7$F]qF<FdoF[pF_pFfpFDFHFKFOFS7'-F(6(F
+coF[qF_pFfp7'Fgp7$F]qFapF\\qF[pFgpFDFHFKFOFS7'-F(6(F]oF[qFfpFbq7'7$F7
+\"#97$FeoFiqFgpFbpFhqFDFHFKFOFS7'-F(6(F[qF_pFbqFgq7'Fjq7$F]qFiqFcqFgpF
+jqFDFHFKFOFS7'-F(6(FjoFbq7'Fcq7$\"\"'Fap7$FerFhnF\\qFcqFgqF^rFDFHFKFOF
+S7'-F(6(F[qFcrFgqF^r7'F_r7$FerFiqFdrFcqF_rFDFHFKFOFS7'-F(6(FfpFcrF^rFj
+r7'7$Feo\"#87$F]qFasF_rFjqF`sFDFHFKFOFS7'-F(6(FcrFgqFjrF_s7'Fbs7$FerFa
+sF[sF_rFbsFDFHFKFOFS7'-F(6(FbqFjr7'F[s7$\"\"(Fiq7$F]tFapFdrF[sF_sFfsFD
+FHFKFOFS7'-F(6(FcrF[tF_sFfs7'Fgs7$F]tFasF\\tF[sFgsFDFHFKFOFS7'-F(6(F^r
+F[tFfsFbt7'7$F]q\"#77$FerFitFgsFbsFhtFDFHFKFOFS7'-F(6(F[tF_sFbtFgt7'Fj
+t7$F]tFitFctFgsFjtFDFHFKFOFS7'-F(6(FjrFbt7'Fct7$\"\")Fas7$FeuFiqF\\tFc
+tFgtF^uFDFHFKFOFS7'-F(6(F[tFcuFgtF^u7'F_u7$FeuFitFduFctF_uFDFHFKFOFS7'
+-F(6(FfsFcuF^uFju7'7$Fer\"#67$F]tFavF_uFjtF`vFDFHFKFOFS7'-F(6(FcuFgtFj
+uF_v7'Fbv7$FeuFavF[vF_uFbvFDFHFKFOFS7'-F(6(FbtFju7'F[v7$\"\"*Fit7$F]wF
+asFduF[vF_vFfvFDFHFKFOFS7'-F(6(FcuF[wF_vFfv7'Fgv7$F]wFavF\\wF[vFgvFDFH
+FKFOFS7'-F(6(F^uF[wFfvFbw7'7$F]t\"#57$FeuFiwFgvFbvFhwFDFHFKFOFS7'-F(6(
+F[wF_vFbwFgw7'Fjw7$F]wFiwFcwFgvFjwFDFHFKFOFS7'-F(6(FjuFbw7'Fcw7$FiwFav
+7$FiwFitF\\wFcwFgwF^xFDFHFKFOFS7'-F(6(F[wFcxFgwF^x7'F_x7$FiwFiwFdxFcwF
+_xFDFHFKFOFS7'-F(6(FfvFcxF^xFix7'7$FeuF]w7$F]wF]wF_xFjwF_yFDFHFKFOFS7'
+-F(6(FcxFgwFixF^y7'F`y7$FiwF]wFjxF_xF`yFDFHFKFOFS7'-F(6(FbwFix7'Fjx7$F
+avFiw7$FavFavFdxFjxF^yFdyFDFHFKFOFS7'-F(6(FcxFiyF^yFdy7'Fey7$FavF]wFjy
+FjxFeyFDFHFKFOFS7'-F(6(F^xFiyFdyF_z7'7$F]wFeu7$FiwFeuFeyF`yFezFDFHFKFO
+FS7'-F(6(FiyF^yF_zFdz7'Ffz7$FavFeuF`zFeyFfzFDFHFKFOFS7'-F(6(FixF_z7'F`
+z7$FitF]w7$FitFiwFjyF`zFdzFjzFDFHFKFOFS7'-F(6(FiyF_[lFdzFjz7'F[[l7$Fit
+FeuF`[lF`zF[[lFDFHFKFOFS7'-F(6(FdyF_[lFjzFe[l7'7$FiwF]t7$FavF]tF[[lFfz
+F[\\lFDFHFKFOFS7'-F(6(F_[lFdzFe[lFj[l7'F\\\\l7$FitF]tFf[lF[[lF\\\\lFDF
+HFKFOFS7'-F(6(F_zFe[l7'Ff[l7$FasFeu7$FasF]wF`[lFf[lFj[lF`\\lFDFHFKFOFS
+7'-F(6(F_[lFe\\lFj[lF`\\l7'Fa\\l7$FasF]tFf\\lFf[lFa\\lFDFHFKFOFS7'-F(6
+(FjzFe\\lF`\\lF[]l7'7$FavFer7$FitFerFa\\lF\\\\lFa]lFDFHFKFOFS7'-F(6(Fe
+\\lFj[lF[]lF`]l7'Fb]l7$FasFerF\\]lFa\\lFb]lFDFHFKFOFS7'-F(6(Fe[lF[]l7'
+F\\]l7$FiqF]t7$FiqFeuFf\\lF\\]lF`]lFf]lFDFHFKFOFS7'-F(6(Fe\\lF[^lF`]lF
+f]l7'Fg]l7$FiqFerF\\^lF\\]lFg]lFDFHFKFOFS7'-F(6(F`\\lF[^lFf]lFa^l7'7$F
+itF]q7$FasF]qFg]lFb]lFg^lFDFHFKFOFS7'-F(6(F[^lF`]lFa^lFf^l7'Fh^l7$FiqF
+]qFb^lFg]lFh^lFDFHFKFOFS7'-F(6(F[]lFa^l7'Fb^l7$FapFer7$FapF]tF\\^lFb^l
+Ff^lF\\_lFDFHFKFOFS7'-F(6(F[^lFa_lFf^lF\\_l7'F]_l7$FapF]qFb_lFb^lF]_lF
+DFHFKFOFS7'-F(6(Ff]lFa_lF\\_lFg_l7'7$FasFeo7$FiqFeoF]_lFh^lF]`lFDFHFKF
+OFS7'-F(6(Fa_lFf^lFg_lF\\`l7'F^`l7$FapFeoFh_lF]_lF^`lFDFHFKFOFS7'-F(6(
+Fa^lFg_l7'Fh_l7$FhnF]q7$FhnFerFb_lFh_lF\\`lFb`lFDFHFKFOFSFO" 2 433 
+433 433 2 0 1 0 2 9 0 4 1 1.000000 45.000000 45.000000 10030 10061 
+10056 10074 0 0 0 20030 0 12010 0 0 0 0 0 0 0 1 1 0 0 0 312 236 1 0 1 
+0 100 1 }}{PARA 11 "" 1 "" {XPPMATH 20 "6#$\"&S3(!\"$" }}}{EXCHG 
+{PARA 0 "> " 0 "" {MPLTEXT 1 0 2616 "Mcanon:=matrix(36,36,[0,0,0,0,0,0
+,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+,0,0,0,0,0,0,0,0,1,1,0,0,0,0,0,0,1,1,0,0,0,0,0,0,0,0,0,0,0,0,1,1,0,0,0
+,0,0,0,0,0,0,0,0,1,0,0,0,1,0,0,0,0,1,1,0,0,0,0,0,0,0,0,0,0,0,0,1,1,1,1
+,0,0,0,0,0,0,0,0,1,0,0,0,0,0,1,0,0,0,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1
+,1,0,0,0,0,0,0,0,0,1,0,0,0,1,0,1,1,0,0,0,0,1,0,1,0,0,0,0,0,0,0,0,0,0,0
+,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,1,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0
+,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]);" }}
+{PARA 11 "" 1 "" {XPPMATH 20 "6#>%'McanonG-%'MATRIXG6#7F7F\"\"!F*F*F*F
+*F*F*F*F*F*F*F*F*F*F*F*F*F*F*F*F*F*F*F*\"\"\"F*F*F*F*F*F*F*F*F*F*F*7FF
+*F*F*F*F*F*F*F*F*F*F*F*F*F*F*F*F*F*F*F*F*F*F+F*F+F*F*F*F*F*F*F*F*F*F*F
+*7FF*F*F*F*F*F*F*F*F*F*F*F*F+F+F*F*F*F*F*F*F+F+F*F*F*F*F*F*F*F*F*F*F*F
+*F+F+7FF*F*F*F*F*F*F*F*F*F*F*F+F*F*F*F+F*F*F*F*F+F+F*F*F*F*F*F*F*F*F*F
+*F*F*F+F+7FF+F+F*F*F*F*F*F*F*F*F+F*F*F*F*F*F+F*F*F*F+F+F*F*F*F*F*F*F*F
+*F*F*F*F*F*F*7FF+F+F*F*F*F*F*F*F*F*F+F*F*F*F+F*F+F+F*F*F*F*F+F*F+F*F*F
+*F*F*F*F*F*F*F*F*7FF*F*F*F*F*F*F*F*F*F*F+F*F*F*F*F*F+F*F*F*F*F*F*F*F+F
+*F*F*F*F*F*F*F*F*F*F*7FF*F*F*F*F*F*F*F*F*F*F*F+F*F*F*F+F*F*F*F*F*F*F*F
+*F*F*F*F*F*F*F*F*F*F*F*F*7FF*F*F*F*F*F*F*F*F*F*F*F*F+F+F*F*F*F*F*F*F*F
+*F*F*F*F*F*F*F*F*F*F*F*F*F*F*7FF*F*F*F*F*F*F*F*F*F*F*F*F*F*F*F*F*F*F*F
+*F*F*F*F*F*F*F*F*F*F*F*F*F*F*F*F*F4F4F4F4F4F4F4F4F4F4F4F4F4F4F4F4F4F4F
+4F4F4F4F4F4F4F4" }}}{EXCHG {PARA 0 ">" 0 "" {MPLTEXT 1 0 20 "display_g
+en(Mcanon);" }}{PARA 13 "" 1 "" {INLPLOT "6(-%)POLYGONSG6F7'7$\"#C\"#N
+7$\"#DF)7$F+\"#O7$F(F-F'7'7$\"#A\"#M7$\"#BF27$F4F)7$F1F)F07'7$F(F27$F+
+F2F*F'F87'7$\"#7\"#L7$\"#8F=7$F?F27$F<F2F;7'F>7$\"#9F=7$FDF2F@F>7'7$\"
+#?F=7$\"#@F=7$FJF27$FHF2FG7'FI7$F1F=F0FKFI7'7$F2F=7$F)F=7$F)F27$F2F2FP
+7'FQ7$F-F=7$F-F2FRFQ7'7$\"#6\"#K7$F<FZF;7$FYF=FX7'7$\"#:FZ7$\"#;FZ7$F[
+oF=7$FinF=Fhn7'7$FHFZ7$FJFZFIFGF_o7'F`o7$F1FZFNFIF`o7'7$F2FZ7$F)FZFQFP
+Fdo7'Feo7$F-FZFUFQFeo7'7$\"\"!\"#J7$\"\"\"F[p7$F]pFZ7$FjoFZFio7'F\\p7$
+\"\"#F[p7$FbpFZF^pF\\p7'7$\"#5F[p7$FYF[pFX7$FfpFZFep7'7$F[oF[p7$\"#<F[
+p7$F\\qFZFjnFjp7'7$FHF[p7$FJF[pF`oF_oF_q7'F`q7$F1F[pFboF`oF`q7'7$Fjo\"
+#I7$F]pFeqF\\pFioFdq7'Ffq7$FbpFeqFapF\\pFfq7'7$FfpFeq7$FYFeqFgpFepFjq7
+'7$FDFeq7$FinFeq7$FinF[p7$FDF[pF]r7'7$F[oFeq7$F\\qFeqF[qFjpFbr7'Fcr7$
+\"#=Feq7$FfrF[pF[qFcr7'7$F1Feq7$F4Feq7$F4F[pFbqFir7'7$F(Feq7$F+Feq7$F+
+F[p7$F(F[pF]s7'7$Ffp\"#H7$FYFcsF[rFjqFbs7'7$F[oFcs7$F\\qFcsFcrFbrFfs7'
+7$F(Fcs7$F+FcsF^sF]sFis7'7$FY\"#G7$F<F]t7$F<FcsFdsF\\t7'7$FinF]t7$F[oF
+]tFfs7$FinFcsFat7'7$F<\"#F7$F?Fft7$F?F]tF^tFet7'Fgt7$FDFft7$FDF]tFhtFg
+t-%&COLORG6&%$RGBGFjoFjoFjo-%*AXESTICKSG6$FjoFjo-%*AXESSTYLEG6#%$BOXG-
+%(SCALINGG6#%,CONSTRAINEDG-%%VIEWG6$;FjoF-F^v" 2 433 433 433 2 0 1 0 
+2 6 0 2 1 1.000000 45.000000 45.000000 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+0 0 1 1 0 0 0 0 0 0 0 0 0 0 1 }}}{EXCHG {PARA 0 ">" 0 "" {MPLTEXT 1 0 
+195 "rand_gen:=proc(x::integer,y::integer)\nlocal M,i,j:\nM:=matrix(x,
+y):\nfor i from 1 to x do \nfor j from 1 to y do \nif rand(1..3)()=3 t
+hen M[i,j]:=1: else M[i,j]:=0: fi: od: od:\nRETURN(evalm(M)):\nend:" }
+}}{EXCHG {PARA 0 ">" 0 "" {MPLTEXT 1 0 16 "rand_gen(10,10);" }}{PARA 
+11 "" 1 "" {XPPMATH 20 "6#-%'MATRIXG6#7,7,\"\"!\"\"\"F(F)F(F)F)F)F(F(7
+,F(F(F(F)F)F(F(F(F(F)7,F(F(F(F(F(F(F(F)F)F)7,F)F(F)F)F(F)F)F(F(F)7,F(F
+)F(F(F(F(F(F(F(F)7,F)F(F(F(F(F(F(F(F(F)7,F(F(F(F(F(F(F(F(F(F)7,F(F)F(F
+(F)F)F)F(F)F(7,F)F(F(F(F(F(F(F(F)F(7,F(F(F)F(F)F(F)F(F(F(" }}}{EXCHG 
+{PARA 0 ">" 0 "" {MPLTEXT 1 0 16 "anime_gen(\",25);" }}{PARA 13 "" 1 "
+" {INLPLOT "6$-%(ANIMATEG6<7'-%)POLYGONSG6C7'7$\"\"\"\"\"*7$\"\"#F-7$F
+/\"#57$F,F1F+7'7$\"\"$F-7$\"\"%F-7$F7F17$F5F1F47'7$\"\"&F-7$\"\"'F-7$F
+>F17$F<F1F;7'F=7$\"\"(F-7$FCF1F?F=7'FB7$\"\")F-7$FGF1FDFB7'7$F5FG7$F7F
+GF6F4FJ7'FK7$F<FGF;F6FK7'7$F-FG7$F1FG7$F1F-7$F-F-FO7'7$FCFC7$FGFC7$FGF
+G7$FCFGFT7'FU7$F-FCFOFVFU7'FY7$F1FCFPFOFY7'7$\"\"!F>7$F,F>7$F,FC7$FhnF
+CFgn7'7$F/F>7$F5F>7$F5FC7$F/FCF]o7'F^o7$F7F>7$F7FCF_oF^o7'7$F<F>7$F>F>
+7$F>FC7$F<FCFeo7'Ffo7$FCF>FTFgoFfo7'7$F-F>7$F1F>FenFYF\\p7'7$F,F<7$F/F
+<F]oFinF_p7'7$F-F<7$F1F<F]pF\\pFbp7'7$FhnF77$F,F7F_p7$FhnF<Fep7'7$F-F7
+7$F1F7FcpFbpFip7'7$F-F57$F1F5FjpFipF\\q7'7$F,F/7$F/F/7$F/F57$F,F5F_q7'
+7$F7F/7$F<F/7$F<F57$F7F5Fdq7'Feq7$F>F/7$F>F5FfqFeq7'Fiq7$FCF/7$FCF5Fjq
+Fiq7'7$FGF/7$F-F/F\\q7$FGF5F_r7'7$FhnF,7$F,F,F_q7$FhnF/Fcr7'7$FGF,7$F-
+F,F`rF_rFgr7'7$F/Fhn7$F5Fhn7$F5F,7$F/F,Fjr7'7$F7Fhn7$F<Fhn7$F<F,7$F7F,
+F_s7'7$F>Fhn7$FCFhn7$FCF,7$F>F,Fds-%&COLORG6&%$RGBGFhnFhnFhn-%*AXESTIC
+KSG6$FhnFhn-%*AXESSTYLEG6#%$BOXG-%(SCALINGG6#%,CONSTRAINEDG-%%VIEWG6$;
+FhnF1Fjt7'-F(6H7'F.F4F9F0F.F3F:FA7'7$F/FGFJF4F.F`uFIFL7'FM7$F>FGF=F;FM
+FN7'F`oF_oFJF`uF`o7'FhoFgoFbuFMFho7'FgoFTFWFbuFgoFSFZ7'FinF]oF`oFjnFin
+F\\oFio7'Fjo7$FGF>FUFTFjoF[p7'FgpF_pFinFgnFgpF^p7'F`p7$F5F<F^oF]oF`p7'
+7$FGF<FbpF\\pFhuF]vFap7'7$FGF7FipFbpF]vF_vFhp7'FfqFjq7$F>F77$F<F7Ffq7'
+FarF\\qFipF_vFarF[qFhq7'F\\rF_rFarF]rF\\rF^r7'F`r7$F1F/F]qF\\qF`r7'Fdr
+F]sF`qF_qFdr7'F\\sFbsFdq7$F5F/F\\s7'FbsFasFeqFdqFbs7'FgsFfsF\\rFiqFgsF
+hsF\\tF_tFctFgt7'-F(6<F^uF:FA7'7$F,FGF`uF.F+F`w7'FWFVFFFBFW7'FVFOFRFFF
+VFSFZFfnFaoFdoF[pFiuFju7'Ffp7$F/F7F`pF_pFfp7'7$FCF7F_vF]v7$FCF<Ffw7'Fj
+qF]rFfwFavFjqFhqFdvFevFjv7'FasFgsFiqFeqFasF[w7'FfsFgrF_rF\\rFfsFfrFhsF
+\\tF_tFctFgt7'-F(6:FAFEFawFbwFeuFSFZFfu7'FhuF\\pFYFUFhuFiuFjuFcwFhw7'F
+]rFarF_vFfwF]rFcvFcqFjvFiwFjwFfr7'F`sFdsFgsFasF`sFcs7'Fes7$FGFhnFgrFfs
+FesFhsF\\tF_tFctFgt7'-F(68FAFE7'FFFR7$F-F1FHFFFeuFZFfuFguF^xFiuFjuFcwF
+ewF_xFcqFjvFjwFfrF^sF`xFax7'Fbx7$F-FhnFhrFgrFbxFhsF\\tF_tFctFgt7'-F(6<
+FE7'FbuFWFBF=FbuFbwFSFXFfuFguF^xFiuFju7'FgwF]vFhuFjoFgwF\\vFcwFdvF^rFh
+vFjvF[wFjwFfrF^sF`xFcsFaxFhxFhsF\\tF_tFctFgt7'-F(68FEF]yFbwFeuFZFfuFio
+F[pFiuFjuF^yF\\vFcwF[rF^rFhvFjv7'Fhr7$F1F,FfvF`rFhr7'F[sF_sFbsF\\sF[sF
+^sFhxFhsF\\tF_tFctFgt7'-F(6:FEF]yFbwFduFeuFXFZFfuFioF[pFiuFjuF^yF\\vFc
+wFhvFjvFiwFjwFfrFbyFdyF^sFhsF\\tF_tFctFgt7'-F(6=FEFauF]yFbwFNFduFeuFXF
+ZFfuFdoFioF[pFiuFjuF^yF\\vFcwFcqF^rFhvFiwFfrFdyF`xFhxFhsF\\tF_tFctFgt7
+'-F(68FAFEFfxFauFN7'FcoFhoFMFKFcoFfuFdoF[pFiuFju7'7$F>F<FgwFjoFfoF`zF^
+yF\\vFcwFcqFhvFiwFjwFfrFbyFhsF\\tF_tFctFgt7'-F(6=FAFEFfxFauF]yFawFbwF^
+zFduFfuFdoFioFguF^xFiuFjuF_zF^yF\\vFcwFewFcqF^rFjvFfrFhxFhsF\\tF_tFctF
+gt7'-F(65F:FfxFLFbwF^zFfu7'FboFeoFhoFcoFboF^xFiuFju7'7$F<F<F`zFfoFeoFi
+zFcw7'FavFfwFgwF`zFavFewF^vFjwFfrFbyFhsF\\tF_tFctFgt7'-F(68FLFau7'F_oF
+coFKFJF_oF^zFduFfuFaoFgzFdoFiuFjuFhzF_zF\\vFcwFjzFewF_xF^rFfrFhxFhsF\\
+tF_tFctFgt7'-F(66FIFauFcuFeuFfuFiuFju7'F[v7$F7F<FboF^oF[vFcw7'FbvFavF`
+zFizFbvF^vFhwF_xFcvFdvF^rFjwFfrFbyFhsF\\tF_tFctFgt7'-F(61FcuFfuFaoFiuF
+juFcw7'Fdw7$F5F7F[vF`pFdwFjzF^vFhwF[qFjwFbyFhxFhsF\\tF_tFctFgt7'-F(6/F
+cuFfuFaoFiuFb[lFcwFh[lFewF_xF^rFfrFhxFhsF\\tF_tFctFgt7'-F(61FcuFfuFaoF
+iuFb[lFcwFh[lF_xFcvFdvF^rFjwFfrFbyFhsF\\tF_tFctFgt7'-F(60FcuFfuFaoFiuF
+b[lFcwFh[lF_xFcvF[rFjwFbyFhxFhsF\\tF_tFctFgt7'-F(6/FcuFfuFaoFiuFb[lFcw
+Fh[lF_xF[rFjwFfrFhxFhsF\\tF_tFctFgt7'-F(60FcuFfuFaoFiuFb[lFcwFh[lF[rF^
+rFjwFfrFaxFhxFhsF\\tF_tFctFgt7'-F(6/FcuFfuFaoFiuFb[lFcwFh[lF^rF[wFbyFa
+xFhxFhsF\\tF_tFctFgt7'-F(6-FcuFfuFaoFiuFb[lFcwFh[lFbyFaxFhxFhsF\\tF_tF
+ctFgt7'-F(6,FcuFfuFaoFiuFb[lFcwFh[lFfrFhxFhsF\\tF_tFctFgt7'-F(6*FcuFfu
+FaoFiuFb[lFcwFh[lFhsF\\tF_tFctFgtFb]lFb]lFct" 2 433 433 433 2 0 1 0 2 
+9 0 4 1 1.000000 45.000000 45.000000 10030 10061 10056 10074 0 0 0 
+20030 0 12010 0 0 0 0 0 0 0 1 1 0 0 0 908 -21976 1 0 1 0 100 1 }}}
+{EXCHG {PARA 0 ">" 0 "" {MPLTEXT 1 0 7 "?prompt" }}}{EXCHG {PARA 0 "> \+
+" 0 "" {MPLTEXT 1 0 32 "interface( echo=2, prompt=`>` );" }}}{EXCHG 
+{PARA 0 ">" 0 "" {MPLTEXT 1 0 0 "" }}}}{MARK "31 1 0" 0 }{VIEWOPTS 1 
+1 0 1 1 1803 }
